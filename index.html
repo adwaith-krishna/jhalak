@@ -75,5 +75,49 @@
         <h1 class="jhalak-text">JHALAK 2025</h1>
         <h2 class="coming-soon-text">Coming Soon</h2>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const jhalakElement = document.querySelector('.jhalak-text');
+            const jhalakText = jhalakElement.textContent;
+            jhalakElement.textContent = '';
+            
+            for (let i = 0; i < jhalakText.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = jhalakText[i] === ' ' ? '\u00A0' : jhalakText[i];
+                jhalakElement.appendChild(span);
+            }
+            
+            jhalakElement.style.opacity = 1;
+            const jhalakSpans = jhalakElement.querySelectorAll('span');
+            jhalakSpans.forEach((span, index) => {
+                setTimeout(() => {
+                    span.style.opacity = 1;
+                    span.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            setTimeout(() => {
+                const comingSoonElement = document.querySelector('.coming-soon-text');
+                const comingSoonText = comingSoonElement.textContent;
+                comingSoonElement.textContent = '';
+                
+                for (let i = 0; i < comingSoonText.length; i++) {
+                    const span = document.createElement('span');
+                    span.textContent = comingSoonText[i] === ' ' ? '\u00A0' : comingSoonText[i];
+                    comingSoonElement.appendChild(span);
+                }
+                
+                comingSoonElement.style.opacity = 1;
+                const comingSoonSpans = comingSoonElement.querySelectorAll('span');
+                comingSoonSpans.forEach((span, index) => {
+                    setTimeout(() => {
+                        span.style.opacity = 1;
+                        span.style.transform = 'translateY(0)';
+                    }, 100 * index);
+                });
+            }, 100 * jhalakText.length + 500);
+        });
+    </script>
 </body>
 </html>
