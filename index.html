@@ -25,6 +25,8 @@
             align-items: center;
             overflow: hidden;
             padding: 20px;
+            background-image: radial-gradient(circle at top right, rgba(121, 68, 154, 0.13), transparent),
+                             radial-gradient(circle at 20% 80%, rgba(41, 196, 255, 0.13), transparent);
         }
 
         .container {
@@ -40,8 +42,13 @@
             letter-spacing: 12px;
             margin-bottom: 20px;
             opacity: 0;
-            color: #ff9d00; /* Orange/gold color for JHALAK */
-            text-shadow: 0 0 15px rgba(255, 157, 0, 0.5);
+            /* Funky gradient color for JHALAK 2025 */
+            background: linear-gradient(to right, #FF00CC, #3333FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 0, 204, 0.5);
         }
 
         .jhalak-text span {
@@ -51,13 +58,37 @@
             transition: all 0.5s ease;
         }
 
+        .coming-soon-container {
+            position: relative;
+            padding: 20px;
+            margin: 20px auto 30px;
+            max-width: 600px;
+        }
+
+        .glassmorphic {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            z-index: 1;
+        }
+
         .coming-soon-text {
-            font-size: 4.5rem;
+            font-size: 5.5rem;
             font-weight: bold;
             position: relative;
             letter-spacing: 8px;
             margin-bottom: 20px;
             opacity: 0;
+            z-index: 2;
+            position: relative;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
 
         .coming-soon-text span {
@@ -74,6 +105,8 @@
             transform: translateY(20px);
             transition: opacity 0.8s ease, transform 0.8s ease;
             transition-delay: 2.5s;
+            z-index: 2;
+            position: relative;
         }
 
         .subtitle.active {
@@ -89,7 +122,7 @@
             }
             
             .coming-soon-text {
-                font-size: 4rem;
+                font-size: 5rem;
                 letter-spacing: 6px;
             }
         }
@@ -101,12 +134,16 @@
             }
             
             .coming-soon-text {
-                font-size: 3rem;
+                font-size: 4rem;
                 letter-spacing: 4px;
             }
             
             .subtitle {
                 font-size: 1.2rem;
+            }
+            
+            .coming-soon-container {
+                padding: 15px;
             }
         }
 
@@ -117,13 +154,17 @@
             }
             
             .coming-soon-text {
-                font-size: 2.2rem;
+                font-size: 3rem;
                 letter-spacing: 3px;
             }
             
             .subtitle {
                 font-size: 1rem;
                 letter-spacing: 1px;
+            }
+            
+            .coming-soon-container {
+                padding: 12px;
             }
         }
 
@@ -134,12 +175,16 @@
             }
             
             .coming-soon-text {
-                font-size: 1.8rem;
+                font-size: 2.5rem;
                 letter-spacing: 2px;
             }
             
             .subtitle {
                 font-size: 0.9rem;
+            }
+            
+            .coming-soon-container {
+                padding: 10px;
             }
         }
 
@@ -155,12 +200,17 @@
             }
             
             .coming-soon-text {
-                font-size: 2.5rem;
+                font-size: 3rem;
                 margin-bottom: 10px;
             }
             
             .subtitle {
                 font-size: 1rem;
+            }
+            
+            .coming-soon-container {
+                padding: 10px;
+                margin: 10px auto;
             }
         }
     </style>
@@ -168,7 +218,11 @@
 <body>
     <div class="container">
         <h1 class="jhalak-text">JHALAK 2025</h1>
-        <h2 class="coming-soon-text">Coming Soon</h2>
+        <div class="coming-soon-container">
+            <div class="glassmorphic"></div>
+            <h2 class="coming-soon-text">Coming Soon</h2>
+            <p class="subtitle">Something awesome is in the works!</p>
+        </div>
     </div>
 
     <script>
@@ -238,12 +292,12 @@
                     jhalakSpans.forEach(span => {
                         if (Math.random() < 0.1) {
                             span.style.textShadow = `
-                                ${Math.random() * 5}px ${Math.random() * 5}px ${Math.random() * 7}px rgba(255, 157, 0, 0.7),
-                                ${Math.random() * -5}px ${Math.random() * 5}px ${Math.random() * 7}px rgba(0, 255, 255, 0.7)
+                                ${Math.random() * 5}px ${Math.random() * 5}px ${Math.random() * 7}px rgba(255, 0, 204, 0.7),
+                                ${Math.random() * -5}px ${Math.random() * 5}px ${Math.random() * 7}px rgba(51, 51, 255, 0.7)
                             `;
                             
                             setTimeout(() => {
-                                span.style.textShadow = '0 0 15px rgba(255, 157, 0, 0.5)';
+                                span.style.textShadow = '0 0 15px rgba(255, 0, 204, 0.5)';
                             }, 100 + Math.random() * 200);
                         }
                     });
@@ -257,7 +311,7 @@
                             `;
                             
                             setTimeout(() => {
-                                span.style.textShadow = 'none';
+                                span.style.textShadow = '0 0 10px rgba(255, 255, 255, 0.5)';
                             }, 100 + Math.random() * 200);
                         }
                     });
